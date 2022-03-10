@@ -14,6 +14,7 @@
 		<style>
 			.container{
 				padding-top:100px;
+				
 			}
 			.mypage{
 				border-radius: 20px;

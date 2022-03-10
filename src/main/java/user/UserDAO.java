@@ -148,5 +148,21 @@ public class UserDAO {
 			return -1;
 		}
 	}
+	
+	public int admin(String userID) {
+		String SQL = "SELECT admin FROM user WHERE userID = ?";
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1,userID);
+			rs=pstmt.executeQuery();
+			if(rs.next())
+				return rs.getInt(1);
+			return -1;	//아이디 없음
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return -2; //DB오류
+		} 
+	}
 
 }

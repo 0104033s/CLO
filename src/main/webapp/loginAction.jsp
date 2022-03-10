@@ -1,6 +1,6 @@
+<%@page import="java.io.PrintWriter"%>
 <%@page import="user.UserDAO"%>
 <%@page import="user.User" %>
-<%@page import="java.io.*"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%
 	request.setCharacterEncoding("UTF-8");
