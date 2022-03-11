@@ -28,7 +28,7 @@
 		}else{
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
-			script.println("location.href='notice.jsp?pageNum=1'");
+			script.println("location.href='noticeList.jsp?pageNum=1'");
 			script.println("</script>");
 		}
 	%>

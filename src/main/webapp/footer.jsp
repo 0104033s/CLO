@@ -5,6 +5,16 @@
 
 
 		<style>
+			html,body{
+				height:max-content;
+				margin:0;
+				padding:0;
+			}
+			body{
+				position:relative;
+				min-height: 100vh;
+				font-family: 'Gowun Dodum', sans-serif;
+			}
 			footer{
 				height:80px;
 				width:100%;
@@ -12,15 +22,13 @@
 				color:#ffffff;
 				text-align:center;
 				margin:auto;
-				padding-top:10px;
 				position:absolute;
-				bottom: 0;
-				border-top: 80px;
+				bottom:0;
 			}
 		</style>
 
 
-	<footer >
+	<footer>
 		footer입니다.
 	</footer>
 

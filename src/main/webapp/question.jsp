@@ -1,12 +1,12 @@
-<%@page import="user.User"%>
-<%@page import="notice.Notice"%>
-<%@page import="notice.NoticeDAO"%>
 <%@page import="user.UserDAO"%>
+<%@page import="question.Question"%>
+<%@page import="question.QuestionDAO"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%
 	request.setCharacterEncoding("UTF-8");
 	
 %>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -29,48 +29,50 @@
 		}
 		.title{
 			padding:3px;
+			font-size: 12px;
 		}
-		
 	</style>
 	</head>
 	<body>
 	<%@include file="header.jsp" %>
+	
+	<!-- 게시물 -->
 	<%
-		int nNum = Integer.parseInt(request.getParameter("nNum"));
-		Notice notice= new NoticeDAO().notice(nNum);	
+		int qNum = Integer.parseInt(request.getParameter("qNum"));
+		Question question = new QuestionDAO().question(qNum);
 		UserDAO userDAO = new UserDAO();
 		int admin = userDAO.admin(userID);
 	%>
-	<!-- 게시물 -->
 	<div class="container row m-auto">
 			<div class="col-2"></div>
 			<div class="notice col-8 m-auto">
 				<table class="table">
 					<tr>
 						<td colspan="2" class="title">제목
-						<td colspan="2"><%=notice.getnTitle() %>
+						<td colspan="2"><%=question.getqTitle() %>
 						<td class="title">번호
-						<td><%=notice.getnNum() %>
+						<td><%=question.getqNum() %>
 					</tr>
 					<tr>
 						<td class="title">아이디
-						<td><%=notice.getUserID() %>
+						<td><%=question.getUserID() %>
 						<td class="title">날짜
-						<td><%=notice.getnDate() %>
+						<td><%=question.getqDate() %>
 						<td class="title">조회수
-						<td><%=notice.getnCount() %>
+						<td><%=question.getqCount() %>
 					</tr>
 					<tr>
 						<td colspan="12" class="title">글내용
 					</tr>
 					<tr>
-						<td colspan="12" style="height: 100%"><%=notice.getnText() %>
+						<td colspan="12" style="height: 100%"><%=question.getqText() %>
 					</tr>
 				</table>
+				
 				<div style="padding-top:20px; text-align:right;">
-					<%if(userID.equals(notice.getUserID()) ||admin == 1){ %>
-					<a href="noticeUpdate.jsp?nNum=<%=notice.getnNum() %>" class="btn btn-dark">수정</a>
-					<a href="noticeUpdateAction.jsp?update=delete&nNum=<%=notice.getnNum() %>" class="btn btn-dark">삭제</a>
+					<%if(userID.equals( question.getUserID())||admin == 1){ %>
+					<a href="questionUpdate.jsp?qNum=<%=question.getqNum() %>" class="btn btn-dark">수정</a>
+					<a href="questionUpdateAction.jsp?update=delete&qNum=<%=question.getqNum() %>" class="btn btn-dark">삭제</a>
 					<%} %>
 					<a href="#" onclick="back()" class="btn btn-dark">목록</a>
 				</div>

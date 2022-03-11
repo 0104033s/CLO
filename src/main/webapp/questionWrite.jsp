@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-	<title>공지 작성</title>
+	<title>문의 작성</title>
 	
 	<style>
 		
@@ -26,10 +26,9 @@
 	<div class="container row m-auto">
 		<div class="col-3"></div>
 		<div class="write col-6 p-auto">
-			<form method="post" action="noticeWriteAction.jsp" onsubmit="return writeCh()">
-				<input class="form-control mb-2" id="title" name="nTitle" type="text" maxlength="30" placeholder="제목"/>
-				<textarea class="nTitle form-control mb-2" id="text" name="nText" rows="7" placeholder="글작성.."></textarea>
-				<input class="form-control mb-2" type="file"/>
+			<form method="post" action="questionWriteAction.jsp" onsubmit="return writeCh()">
+				<input class="form-control mb-2" id="title" name="qTitle" type="text" maxlength="30" placeholder="제목"/>
+				<textarea class="nTitle form-control mb-2" id="text" name="qText" rows="7" placeholder="글작성.."></textarea>
 				<input class="form-control mb-2" type="submit" value="작성하기"/>
 				<input class="form-control mb-2" type="reset" value="지우기"/>
 				<input class="form-control mb-2" type="button" onclick="back()"value="뒤로가기"/>

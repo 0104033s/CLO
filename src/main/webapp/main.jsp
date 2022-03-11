@@ -21,6 +21,10 @@ request.setCharacterEncoding("UTF-8");
 	<%@include file="footer.jsp" %>
 	
 
+	<div class="container" style="height: 200px;">
+	
+
+	</div>
 	
 </body>
 </html>

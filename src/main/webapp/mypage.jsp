@@ -12,8 +12,11 @@
 	<head>
 		<title>마이페이지</title>
 		<style>
+			
 			.container{
 				padding-top:100px;
+				padding-bottom:100px;
+				height: 100%;
 				
 			}
 			.mypage{

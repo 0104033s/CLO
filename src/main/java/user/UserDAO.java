@@ -57,23 +57,7 @@ public class UserDAO {
 			return -1;	//DB오류
 		}
 	}
-	//ID 중복체크
-	public int id(String userID) {
-		String SQL = "SELECT userID FROM user WHERE userID = ?";
-		try {
-			PreparedStatement pstmt = conn.prepareStatement(SQL);
-			pstmt.setString(1,userID);
-			rs=pstmt.executeQuery();
-			if(rs.next()) {
-				if(rs.getString(1)==userID)
-					return 0; //아이디 중복있음
-				}return 1; //아이디 중복 없음
-		}catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-			return -1;	//DB오류
-		}
-	}
+	
 	public int join(String userID,String userPW,String userName,String userNickname, String userTel,String userEmail,String userGender) {
 		String SQL = "INSERT INTO user VALUES(?,?,?,?,?,?,?,?,0)";
 		try {
@@ -162,7 +146,9 @@ public class UserDAO {
 			// TODO: handle exception
 			e.printStackTrace();
 			return -2; //DB오류
-		} 
+		}
 	}
+	
+
 
 }

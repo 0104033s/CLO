@@ -1,3 +1,6 @@
+
+<%@page import="question.QuestionDAO"%>
+<%@page import="question.Question"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%
 	request.setCharacterEncoding("UTF-8");
@@ -5,7 +8,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-	<title>공지 작성</title>
+	<title>공지 수정</title>
 	
 	<style>
 		
@@ -22,16 +25,18 @@
 	</head>
 	<body>
 	<%@include file = "header.jsp" %>
-	
+	<%
+		int qNum = Integer.parseInt(request.getParameter("qNum"));
+		Question question = new QuestionDAO().question(qNum);
+	%>
 	<div class="container row m-auto">
 		<div class="col-3"></div>
 		<div class="write col-6 p-auto">
-			<form method="post" action="noticeWriteAction.jsp" onsubmit="return writeCh()">
-				<input class="form-control mb-2" id="title" name="nTitle" type="text" maxlength="30" placeholder="제목"/>
-				<textarea class="nTitle form-control mb-2" id="text" name="nText" rows="7" placeholder="글작성.."></textarea>
-				<input class="form-control mb-2" type="file"/>
-				<input class="form-control mb-2" type="submit" value="작성하기"/>
-				<input class="form-control mb-2" type="reset" value="지우기"/>
+			<form method="post" action="questionUpdateAction.jsp?update=update&qNum=<%=qNum%>" onsubmit="return writeCh()">
+				<input class="form-control mb-2" id="title" name="qTitle" type="text" maxlength="30" value="<%=question.getqTitle()%>"/>
+				<textarea class="nTitle form-control mb-2" id="text" name="qText" rows="7" ><%=question.getqText()%></textarea>
+				<input class="form-control mb-2" type="submit" value="수정하기"/>
+				<input class="form-control mb-2" type="reset" value="원래대로"/>
 				<input class="form-control mb-2" type="button" onclick="back()"value="뒤로가기"/>
 			</form>
 		</div>

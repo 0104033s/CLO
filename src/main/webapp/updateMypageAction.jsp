@@ -1,5 +1,4 @@
 <%@page import="java.io.PrintWriter"%>
-<%@page import="user.User"%>
 <%@page import="user.UserDAO"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%

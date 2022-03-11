@@ -1,3 +1,4 @@
+<%@page import="user.UserDAO"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%
 	request.setCharacterEncoding("UTF-8");
@@ -56,6 +57,7 @@
 			</div>
 			<div class="col-4"></div>
 		</div>
+		
 		<%@include file="footer.jsp" %>
 		<script type="text/javascript">
 			function joinCheck(){
@@ -170,6 +172,11 @@
 				}
 				
 			}
+			
+			
+		
 		</script>
+
+		
 	</body> 
 </html>
