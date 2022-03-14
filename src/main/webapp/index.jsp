@@ -9,7 +9,7 @@
 	</head>
 	<body>
 		<script>
-			location.href="main.jsp"
+			location.href="main.jsp?bWord="
 		</script>
 	</body> 
 </html>

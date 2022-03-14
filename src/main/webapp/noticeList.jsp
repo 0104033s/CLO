@@ -90,10 +90,9 @@
 						  </ul>
 						</nav>
 					</div>
-					<%UserDAO userDAO = new UserDAO();
-						int result=userDAO.admin(userID);
+					<%
 						
-						if(result == 1){
+						if(admin == 1){
 					%>
 					<div class="col-12" style="text-align:right">
 					<a href="noticeWrite.jsp" class="btn btn-dark">글쓰기</a>

@@ -28,9 +28,7 @@
 	</head>
 	<body>
 		<%@include file="header.jsp" %>
-		<%UserDAO userDAO = new UserDAO();
-			int admin = userDAO.admin(userID);
-		%>
+
 			<div class="container row m-auto">
 				<div class="col-2"></div>
 				<div class="notice col-8">

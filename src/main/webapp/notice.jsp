@@ -41,8 +41,7 @@
 	<%
 		int nNum = Integer.parseInt(request.getParameter("nNum"));
 		Notice notice= new NoticeDAO().notice(nNum);	
-		UserDAO userDAO = new UserDAO();
-		int admin = userDAO.admin(userID);
+		
 	%>
 	<!-- 게시물 -->
 	<div class="container row m-auto">

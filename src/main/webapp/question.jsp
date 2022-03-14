@@ -43,8 +43,7 @@
 	<%
 		int qNum = Integer.parseInt(request.getParameter("qNum"));
 		Question question = new QuestionDAO().question(qNum);
-		UserDAO userDAO = new UserDAO();
-		int admin = userDAO.admin(userID);
+	
 	%>
 	<div class="container row m-auto">
 			<div class="col-2"></div>

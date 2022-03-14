@@ -25,6 +25,16 @@
 				position:absolute;
 				bottom:0;
 			}
+			a{
+				text-decoration: none;
+				color:#000000;
+			}
+			a:hover {
+				background-color:#000000;
+				opacity:0.9;
+				border-radius: 5px;
+				color:#ffffff;
+}
 		</style>
 
 
