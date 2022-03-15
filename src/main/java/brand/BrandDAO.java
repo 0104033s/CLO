@@ -61,7 +61,6 @@ public class BrandDAO {
 		try {
 		PreparedStatement pstmt = conn.prepareStatement(SQL);
 		pstmt.setString(1,bWord+"%");
-		
 		rs=pstmt.executeQuery();
 		while(rs.next()) {
 			Brand brand = new Brand();

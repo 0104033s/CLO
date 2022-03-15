@@ -35,9 +35,9 @@
 			String brand = multi.getParameter("brand");
 			String userID = (String)session.getAttribute("userID");
 			originfile=multi.getOriginalFileName(str);
+			
 			BoardDAO boardDAO = new BoardDAO();
 			int result = boardDAO.write(bTitle, bText, brand, userID, originfile);
-			
 			if(result==-1){
 				PrintWriter script = response.getWriter();
 				script.println("<script>");
@@ -46,8 +46,8 @@
 				script.println("</script>");
 			}else{
 				PrintWriter script = response.getWriter();
-				script.println("<script>");
-				script.println("location.href='board.jsp?bNum="+board.getbNum()+"'");
+				script.println("<script>");					
+				script.println("location.href='board.jsp?boardNum="+(result-1)+"'");
 				script.println("</script>");
 			}
 		}catch(Exception e){

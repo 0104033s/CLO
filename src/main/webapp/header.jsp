@@ -42,7 +42,7 @@
 				<li  class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">게시판3</a>
 					<ul class="dropdown-menu">
-						<li><a class="dropdown-item" href="brandList.jsp?pageNum=1">ALL</a></li>
+						<li><a class="dropdown-item" href="boardList.jsp?pageNum=1&brand=">ALL</a></li>
 						<li><hr class="dropdown-divider"></li>
 						<li><a class="dropdown-item" href="brand.jsp?bNum=1">list1</a></li>
 						<%if(admin==1){ %>

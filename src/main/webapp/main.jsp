@@ -50,15 +50,17 @@ request.setCharacterEncoding("UTF-8");
 		top:50%;
 		left:50%;
 		transform:translate(-50%,-50%);
-		width:90%; 
-		height:90%;
+		width:100%; 
+		height:100%;
 		display:none;
 		padding:50px;
+		text-align: center;
 	}
 	.tag:hover>.name{
-		display:block;
+		display:inline;
 		background-color: rgba(0,0,0,0.8);
 		border-radius: 10px;
+		vertical-align: middle;
 		
 }	
 

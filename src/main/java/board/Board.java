@@ -8,6 +8,7 @@ public class Board {
 	private String brand;
 	private String userID;
 	private String bImg;
+	private String bDate;
 	private int bDelete;
 	private int bCnt;
 	
@@ -47,6 +48,12 @@ public class Board {
 	public void setbImg(String bImg) {
 		this.bImg = bImg;
 	}
+	public String getbDate() {
+		return bDate;
+	}
+	public void setbDate(String bDate) {
+		this.bDate = bDate;
+	}
 	public int getbDelete() {
 		return bDelete;
 	}
@@ -59,6 +66,8 @@ public class Board {
 	public void setbCnt(int bCnt) {
 		this.bCnt = bCnt;
 	}
+	
+	
 	
 	
 }
