@@ -66,7 +66,7 @@ public class Board {
 	public void setbCnt(int bCnt) {
 		this.bCnt = bCnt;
 	}
-	
+
 	
 	
 	

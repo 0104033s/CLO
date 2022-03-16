@@ -53,7 +53,7 @@
 						<tbody>
 						<%	int pageNum = 1;
 							
-							if(pageNum == 1){
+							if(request.getParameter("pageNum")!= null){
 								pageNum = Integer.parseInt(request.getParameter("pageNum"));
 							}
 							QuestionDAO questionDAO = new QuestionDAO();
@@ -75,7 +75,7 @@
 								<td><%=list.get(i).getqCount() %>
 							</tr>
 							<%} %>
-							<%}else if(admin==1){ 
+							<%}else if(admin==1){
 							ArrayList<Question> list = new QuestionDAO().adminList(pageNum);
 							if(list.isEmpty()){%>
 							<tr style="text-align:center;">
@@ -92,7 +92,11 @@
 									<td><%=list.get(i).getqDate() %>
 									<td><%=list.get(i).getqCount() %>
 								</tr>
-								<%}} %>
+								<%}}else{ %>
+								<tr style="text-align:center;">
+								<td colspan="5" >로그인을 해주세요. <a href="login.jsp">로그인</a></td>
+							</tr>
+								<%} %>
 						</tbody>
 					</table>
 					<%if(admin==1){ %>
@@ -145,14 +149,21 @@
 					
 					
 					<div class="col-12" style="text-align:right">
-					<a href="questionWrite.jsp" class="btn btn-dark">글쓰기</a>
+					<a href="questionWrite.jsp" onclick="return writeCk()" class="btn btn-dark">글쓰기</a>
 					</div>
 					
 				</div>
 				<div class="col-2"></div>
 			</div>
 		<%@include file="footer.jsp" %>
-		
+		<script type="text/javascript">
+		function writeCk(){
+			if(<%=userID%>==null){
+				alert('비회원은 글을 작성할 수 없습니다.');
+				return false;
+			}
+		}
+		</script>
 	
 	</body> 
 </html>

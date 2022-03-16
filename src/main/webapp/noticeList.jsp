@@ -60,7 +60,7 @@
 						%>
 							<tr>
 								<td><%=list.get(i).getnNum() %>
-								<td><a href="notice.jsp?nNum=<%=list.get(i).getnNum()%>"><%=list.get(i).getnTitle() %></a>
+								<td><a onclick="return readCk()"href="notice.jsp?nNum=<%=list.get(i).getnNum()%>"><%=list.get(i).getnTitle() %></a>
 								<td><%=list.get(i).getUserID()%>
 								<td><%=list.get(i).getnDate() %>
 								<td><%=list.get(i).getnCount() %>
@@ -102,5 +102,13 @@
 				<div class="col-2"></div>
 			</div>
 		<%@include file="footer.jsp" %>
+		<script>
+			function readCk(){
+				if(<%=userID%>==null){
+					alert('로그인을 해주세요.');
+					return false;
+				}
+			}
+		</script>
 	</body> 
 </html>

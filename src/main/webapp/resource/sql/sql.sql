@@ -75,3 +75,14 @@ bCnt int,
 primary key(bNum)
 )default charset=utf8;
 select * from board;
+
+drop table reply;
+create table reply(
+rNum int,
+bNum int,
+reply text,
+rDate varchar(20),
+userID varchar(20),
+primary key(rNum)
+)default charset=utf8;
+select *from reply;

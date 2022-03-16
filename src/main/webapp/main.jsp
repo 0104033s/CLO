@@ -1,3 +1,5 @@
+<%@page import="board.Board"%>
+<%@page import="board.BoardDAO"%>
 <%@page import="brand.Brand"%>
 <%@page import="brand.BrandDAO"%>
 <%@page import="notice.Notice"%>
@@ -90,7 +92,6 @@ request.setCharacterEncoding("UTF-8");
 					
 					<tbody>
 					<%
-					NoticeDAO noticeDAO = new NoticeDAO();
 					ArrayList<Notice> list = new NoticeDAO().noticeList(1);
 					for(int i=0;i<list.size(); i++){ %>
 						<tr>
@@ -112,15 +113,18 @@ request.setCharacterEncoding("UTF-8");
 				<table class="table">
 					<thead>
 						<tr>
-							<th colspan="3"><a href="brandList.jsp?pangNum=1">브랜드</a></th>
+							<th colspan="3"><a href="brandList.jsp?pangNum=1">게시판</a></th>
 						</tr>
 					</thead>
+					<%ArrayList<Board> blist = new BoardDAO().boardList("",1);%>
 					<tbody>
+					<%for(int i=0; i<blist.size();i++){ %>
 						<tr>
-							<td>번호.
-							<td style="text-align:left;">제목
-							<td>조회수
+							<td><%=blist.get(i).getbNum() %>
+							<td style="text-align:left;"><a href="board.jsp?boardNum=<%=blist.get(i).getbNum() %>"><%=blist.get(i).getbTitle() %></a>
+							<td><%=blist.get(i).getbCnt() %>
 						</tr>
+						<%} %>
 						<colgroup>
 							<col style="width:10%"/>
 							<col style="width:80%"/>
@@ -151,7 +155,7 @@ request.setCharacterEncoding("UTF-8");
 		<div class="col-10 m-auto row pt-2">
 			<% for(int i=0; i<brandList.size(); i++){%>
 			<div class="brand col-2 " style="height:150px; position:relative; ">
-				<a href="#" class="tag" >
+				<a href="boardList.jsp?pageNum=1&brand=<%=brandList.get(i).getbName() %>" class="tag" >
 				<img class="img" src="resource/img/brand/<%=brandList.get(i).getbImg() %>"/>
 				<span class="name"><%=brandList.get(i).getbName() %></span>
 				</a>

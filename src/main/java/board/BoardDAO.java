@@ -101,7 +101,7 @@ public class BoardDAO {
 			try {
 				PreparedStatement pstmt = conn.prepareStatement(SQL);
 				pstmt.setString(1,brand);
-				pstmt.setInt(2, pageNum(brand));
+				pstmt.setInt(2, (pageNum-1)*10);
 				rs=pstmt.executeQuery();
 				while(rs.next()) {
 					Board board = new Board();

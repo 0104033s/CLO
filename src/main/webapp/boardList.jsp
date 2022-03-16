@@ -1,3 +1,4 @@
+<%@page import="reply.ReplyDAO"%>
 <%@page import="brand.Brand"%>
 <%@page import="brand.BrandDAO"%>
 <%@page import="board.Board"%>
@@ -20,6 +21,7 @@
 		}
 		.table{
 			text-align: center;
+			padding-top: 10px;
 		}
 	</style>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -33,7 +35,10 @@
 		<%
 			int pageNum =Integer.parseInt(request.getParameter("pageNum"));
 			String brand =(String)request.getParameter("brand");
-			
+			String array = request.getParameter("array");
+			if(request.getParameter("array")!=null){
+				array = request.getParameter("array");
+			}
 			ArrayList<Brand> brandList =new BrandDAO().brandList("");
 			if(brand==""){
 		%><h2>ALL</h2><%}else{ %>
@@ -67,10 +72,8 @@
 						<col style="width:10%">
 					</colgroup>
 				<%
-				
-					
-					
 					ArrayList<Board> list = new BoardDAO().boardList(brand, pageNum);
+					ReplyDAO replyDAO = new ReplyDAO();
 				%>
 				
 				<tbody>
@@ -82,15 +85,18 @@
 					</tr>	
 						<%
 					}
-					for(int i=0; i<list.size();i++){ %>
-					
+					for(int i=0; i<list.size();i++){
+						int reply = replyDAO.count(list.get(i).getbNum());
+						%>
+						
 					<tr>
 						<td><%=list.get(i).getbNum() %></td>
 						<td><%=list.get(i).getBrand() %>
-						<td><a href="board.jsp?boardNum=<%=list.get(i).getbNum() %>&pageNum=<%=pageNum%>&brand=<%=brand%>"><%=list.get(i).getbTitle() %>
+						<td><a onclick="return readCk()"href="board.jsp?boardNum=<%=list.get(i).getbNum() %>&pageNum=<%=pageNum%>&brand=<%=brand%>"><%=list.get(i).getbTitle() %>
 						<%if(list.get(i).getbImg()!=null){%>
 							<span class="material-icons" style="font-size:13px">photo_camera</span>
 						<%}%></a>
+						<%if(reply!=0){ %><span class="badge badge-sm bg-dark rounded-pill" ><%=reply %></span><%} %>
 						<td><%=list.get(i).getUserID() %>
 						<td><%=list.get(i).getbDate() %>
 						<td><%=list.get(i).getbCnt() %>
@@ -100,7 +106,7 @@
 				</tbody>
 			</table>
 			<div class="write" style="text-align: right;">
-				<a href="boardWrite.jsp" class="btn btn-dark ">글쓰기</a>
+				<a href="boardWrite.jsp" onclick="return writeCk()" class="btn btn-dark ">글쓰기</a>
 			</div>
 		<%	BoardDAO pageDAO = new BoardDAO();
 	  		int pageCnt =pageDAO.pageNum(brand); 
@@ -129,5 +135,23 @@
 		</div>
 		<div class="col-2"></div>
 	</div>
+	<script type="text/javascript">
+	function writeCk(){
+		if(<%=userID%>==null){
+			alert('비회원은 글을 작성할 수 없습니다.');
+			return false;
+		}
+	}
+		function readCk(){
+			if(<%=userID%>==null){
+				alert('로그인을 해주세요.');
+				return false;
+			}
+		}
+		function array(){
+			var selected = document.getElementById("array");
+			var optionVal = selected.options[selected.selectedIndex].value;
+		}
+	</script>
 	</body> 
 </html>

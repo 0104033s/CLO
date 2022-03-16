@@ -24,7 +24,6 @@
 	</head>
 	<body>
 		<%@include file="header.jsp" %>
-		
 		<div class="container row m-auto">
 			<div class="col-4"></div>
 			<div class="login col-4 p-auto">

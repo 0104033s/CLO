@@ -1,10 +1,11 @@
+<%@page import="brand.Brand"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="brand.BrandDAO"%>
 <%@page import="user.UserDAO"%>
 <%@page import="java.io.PrintWriter"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
-
 <%
 	request.setCharacterEncoding("UTF-8");
-	
 %>
 <%
 		String userID =null;
@@ -40,11 +41,15 @@
 				</li>
 				<!-- 브랜드 게시판 드롭다운 시작-->
 				<li  class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">게시판3</a>
+					<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">게시판</a>
 					<ul class="dropdown-menu">
 						<li><a class="dropdown-item" href="boardList.jsp?pageNum=1&brand=">ALL</a></li>
 						<li><hr class="dropdown-divider"></li>
-						<li><a class="dropdown-item" href="brand.jsp?bNum=1">list1</a></li>
+						<%
+							ArrayList<Brand> bList = new BrandDAO().brandList("");
+						for(int i=0; i<bList.size(); i++){ %>
+						<li><a class="dropdown-item" href="boardList.jsp?pageNum=1&brand=<%=bList.get(i).getbName() %>"><%=bList.get(i).getbName() %></a></li>
+						<%} %>
 						<%if(admin==1){ %>
 						<li><hr class="dropdown-divider"></li>
 						<li><a class="dropdown-item" href="brandWrite.jsp">ADD</a></li>
