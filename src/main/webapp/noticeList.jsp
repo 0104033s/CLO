@@ -13,10 +13,6 @@
 	<style>
 		.container{
 			padding-top:200px;
-			
-		}
-		.notice{
-			background-color: #0000000;
 		}
 		.table{
 			width:600px;
@@ -60,7 +56,7 @@
 						%>
 							<tr>
 								<td><%=list.get(i).getnNum() %>
-								<td><a onclick="return readCk()"href="notice.jsp?nNum=<%=list.get(i).getnNum()%>"><%=list.get(i).getnTitle() %></a>
+								<td style="overflow:hidden; white-space:nowrap;"><a onclick="return readCk()"href="notice.jsp?nNum=<%=list.get(i).getnNum()%>"><%=list.get(i).getnTitle() %></a>
 								<td><%=list.get(i).getUserID()%>
 								<td><%=list.get(i).getnDate() %>
 								<td><%=list.get(i).getnCount() %>

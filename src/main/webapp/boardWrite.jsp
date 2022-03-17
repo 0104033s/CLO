@@ -32,7 +32,7 @@
 		<div class="col-3"></div>
 		<div class="board col-6">
 			<form method="post" enctype="multipart/form-data" action="boardWriteAction.jsp" onsubmit="return writeCk()">
-				<input class="form-control mb-2" type="text" id="bTitle" name="bTitle" maxlength="30" placeholder="제목"/>
+				<input class="form-control mb-2" type="text" id="bTitle" name="bTitle" maxlength="25" placeholder="제목"/>
 				<textarea rows="10" class="form-control mb-2" id="bText" name="bText" style="resize:none" placeholder="내용"></textarea>
 				<select class="form-select mb-2" id="brand" name="brand">
 					<option value="no">brand

@@ -25,13 +25,11 @@ request.setCharacterEncoding("UTF-8");
 		padding-bottom: 100px;
 	}
 	.board{
-		background-color: #000000;
-		border-radius: 20px;
+
 		padding:10px;
 		
 	}
 	.table{
-		background-color: #ffffff;
 		text-align:center;
 	}
 

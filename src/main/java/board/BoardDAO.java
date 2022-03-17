@@ -161,8 +161,55 @@ public class BoardDAO {
 		}
 		return null;
 	}
+	public ArrayList<Board> userList(String userID){
+		String SQL = "SELECT bNum,bTitle,Brand,bImg,DATE_FORMAT(bDate,'%Y-%m-%d') FROM board WHERE userID =? AND bDelete = 0 ORDER BY bNum DESC";
+		ArrayList<Board> list = new ArrayList<Board>();
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1,userID);
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				Board board = new Board();
+				board.setbNum(rs.getInt(1));
+				board.setbTitle(rs.getString(2));
+				board.setBrand(rs.getString(3));
+				board.setbImg(rs.getString(4));
+				board.setbDate(rs.getString(5));
+				list.add(board);
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return list;
+	}
 	
+	public int update(String bTitle,String bText,String Brand,int bNum) {
+		String SQL="UPDATE board SET bTitle = ?, bText = ?, brand = ? WHERE bNum=?";
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, bTitle);
+			pstmt.setString(2, bText);
+			pstmt.setString(3,Brand);
+			pstmt.setInt(4, bNum);
+			return pstmt.executeUpdate();
+			} catch (Exception e) {
+			// TODO: handle exception
+				e.printStackTrace();
+				return -1;
+		}
+	}
 	
-	
+	public int delete(int bNum) {
+		String SQL ="DELETE FROM board WHERE bNum=?";
+		try {
+		PreparedStatement pstmt = conn.prepareStatement(SQL);
+		pstmt.setInt(1, bNum);
+			return pstmt.executeUpdate();
+		}catch(Exception e) {
+			e.printStackTrace();
+			return -1;
+		}
 
+	}
 }

@@ -19,11 +19,8 @@
 			padding-top:100px;
 		}
 		.Question{
-			border-radius: 20px;
-			border-color:#000000;
 			font-size: 15px;
-			height: 500px;
-			background-color: #000000;
+			height: 500px;	
 			padding:20px;
 		}
 		.table{
@@ -48,7 +45,7 @@
 	<div class="container row m-auto">
 			<div class="col-2"></div>
 			<div class="Question col-8 m-auto">
-				<table class="table">
+				<table class="table border border-2">
 					<tr>
 						<td colspan="2" class="title">제목
 						<td colspan="2"><%=question.getqTitle() %>
@@ -67,7 +64,7 @@
 						<td colspan="12" class="title">글내용
 					</tr>
 					<tr>
-						<td colspan="12" style="height: 100%"><%=question.getqText() %>
+						<td colspan="12" style="height: 100%; overflow:hidden; word-break:break-all;"><%=question.getqText() %>
 					</tr>
 				</table>
 				

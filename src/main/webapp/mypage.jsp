@@ -1,3 +1,7 @@
+<%@page import="question.QuestionDAO"%>
+<%@page import="question.Question"%>
+<%@page import="board.Board"%>
+<%@page import="board.BoardDAO"%>
 <%@page import="user.User"%>
 <%@page import="user.UserDAO"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
@@ -19,15 +23,10 @@
 				height: 100%;
 				
 			}
-			.mypage{
-				border-radius: 20px;
-				background-color: #000000;
-				padding:60px;
-			}
+		
 			p{
 			color:#ffffff;
-			margin: 10px;
-			padd
+			padding-top:10px;
 			}
 			
 		</style>
@@ -44,13 +43,15 @@
 		}
 	%>
 		<div class="container row m-auto">
-			<div class="col-4"></div>
+
 			<div class="mypage col-4 row">
-				<ul class="list-group p-0">
+			<h3 style="text-align:center;"><%=userID %></h3>
+				<ul class="list-group">
 				<% 
 					
 					User user = new UserDAO().mypage(userID);
 				%>
+					
 					<p>아이디
 					<li class="list-group-item"><%=user.getUserID() %></li>
 					<p>이름
@@ -69,7 +70,46 @@
 				
 				
 			</div>
-			<div class="col-4"></div>
+
+			<div class=" mypage col-4">
+			<% ArrayList<Board> boardList = new BoardDAO().userList(userID);
+				
+			%>
+				<h3 style="text-align:center">게시판</h3>
+				<ul class="list-group">
+				<%for(int i=0;i<boardList.size();i++){ %>
+					<li class="list-group-item">
+						<div class="board row">
+							<div class="col-4"><%=boardList.get(i).getBrand() %></div>
+							<div class="col-8"><%=boardList.get(i).getbDate() %></div>
+							<div class="col-8"><a href="#"><%=boardList.get(i).getbTitle() %></a></div>
+							<a class="col-2" href="#">수정</a>
+							<a class="col-2" href="#">삭제</a>
+						</div>
+					</li>
+					<%} %>
+				</ul>
+			</div>
+
+			<div class="mypage col-4">
+			<% ArrayList<Question> questionList = new QuestionDAO().userList(userID);
+				
+			%>
+				<h3 style="text-align:center">문의</h3>
+				<ul class="list-group">
+				<%for(int i=0;i<questionList.size();i++){ %>
+					<li class="list-group-item">
+						<div class="board row">
+							<div class="col-6"><%=questionList.get(i).getqNum() %></div>
+							<div class="col-6"><%=questionList.get(i).getqDate() %></div>
+							<div class="col-8"><a href="question.jsp?qNum=<%=questionList.get(i).getqNum()%>"><%=questionList.get(i).getqTitle() %></a></div>
+							<a class="col-2" href="questionUpdate.jsp?qNum=<%=questionList.get(i).getqNum()%>">수정</a>
+							<a class="col-2" href="questionUpdateAction.jsp?qNum=<%=questionList.get(i).getqNum()%>&update=delete">삭제</a>
+						</div>
+					</li>
+					<%} %>
+				</ul>
+			</div>
 		</div>
 		<%@include file="footer.jsp" %>
 		<script type="text/javascript">

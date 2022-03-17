@@ -24,6 +24,7 @@
 				margin:auto;
 				position:absolute;
 				bottom:0;
+				padding-top:20px;
 			}
 			a{
 				text-decoration: none;
@@ -39,6 +40,6 @@
 
 
 	<footer>
-		footer입니다.
+		-
 	</footer>
 

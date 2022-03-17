@@ -192,6 +192,24 @@ public class QuestionDAO {
 			return -1;
 		}
 	}
-	
+	public ArrayList<Question> userList(String userID){
+		String SQL = "SELECT qNum,DATE_FORMAT(qDate,'%Y-%m-%d'),qTitle FROM question WHERE userID=? AND qDelete=0 ORDER BY qNum DESC";
+		ArrayList<Question> list = new ArrayList<Question>();
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1,userID);
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+			Question question = new Question();
+			question.setqNum(rs.getInt(1));
+			question.setqDate(rs.getString(2));
+			question.setqTitle(rs.getString(3));
+			list.add(question);
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return list;
+	}
 
 }

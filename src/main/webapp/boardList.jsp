@@ -92,7 +92,7 @@
 					<tr>
 						<td><%=list.get(i).getbNum() %></td>
 						<td><%=list.get(i).getBrand() %>
-						<td><a onclick="return readCk()"href="board.jsp?boardNum=<%=list.get(i).getbNum() %>&pageNum=<%=pageNum%>&brand=<%=brand%>"><%=list.get(i).getbTitle() %>
+						<td style="overflow:hidden; white-space:nowrap;"><a onclick="return readCk()"href="board.jsp?boardNum=<%=list.get(i).getbNum() %>&pageNum=<%=pageNum%>&brand=<%=brand%>"><%=list.get(i).getbTitle() %>
 						<%if(list.get(i).getbImg()!=null){%>
 							<span class="material-icons" style="font-size:13px">photo_camera</span>
 						<%}%></a>

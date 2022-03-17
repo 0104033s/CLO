@@ -31,7 +31,7 @@
 		<%@include file="header.jsp" %>
 		<%@include file="footer.jsp" %>
 		<div class="container m-auto row">
-			<div class="col-3"></div>
+			<div class="col-2"></div>
 				<%	int pageNum=1;
 					if(request.getParameter("pageNum")!=null)
 						pageNum=Integer.parseInt(request.getParameter("pageNum"));
@@ -48,15 +48,14 @@
 					 
 				%>
 				
-			<div class="col-6 ">
+			<div class="col-8 ">
 				<table class="table m-2 border border-2">
 					<tr>
 						<td>브랜드
 						<td><a href="boardList.jsp?pageNum=1&brand=<%=board.getBrand()%>"><%=board.getBrand() %></a>
 						<td>제목
-						<td><%=board.getbTitle() %>
-						<td>번호
-						<td><%=board.getbNum() %>
+						<td colspan="3" style="overflow:hidden; white-space:nowrap;"><%=board.getbTitle() %>
+						
 					</tr>
 					<tr>
 						<td>아이디
@@ -73,15 +72,15 @@
 					</tr>
 					<%} %>
 					<tr>
-						<td colspan="6">
+						<td colspan="6" style="overflow:hidden; word-break:break-all;">
 							<%=board.getbText() %>
 						</td>
 					</tr>
 				</table>
 				<div  style="text-align:right">
 				<%if(userID.equals(board.getUserID())||admin==1){ %>
-					<a href="boardUpdate.jsp?bNum=<%=board.getbNum() %>" class="btn btn-dark btn-sm">수정하기</a>
-					<a href="boardUpdateAction.jsp?bNum=<%=board.getbNum() %>" class="btn btn-dark btn-sm">삭제하기</a>
+					<a href="boardUpdate.jsp?bNum=<%=board.getbNum() %>&brand=<%=board.getBrand()%>" class="btn btn-dark btn-sm">수정하기</a>
+					<a href="boardUpdateAction.jsp?update=delete&bNum=<%=board.getbNum() %>" class="btn btn-dark btn-sm">삭제하기</a>
 					<%} %>
 					<a href="boardList.jsp?pageNum=<%=pageNum%>&brand=<%=brand%>" class="btn btn-dark btn-sm">목록으로</a>
 				</div>

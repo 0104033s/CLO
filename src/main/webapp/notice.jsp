@@ -19,12 +19,10 @@
 			padding-top:100px;
 		}
 		.notice{
-			border-radius: 20px;
-			border-color:#000000;
+
 			font-size: 15px;
 			height: 500px;
-			background-color: #000000;
-			padding:20px;
+
 		}
 		.table{
 			background-color: #ffffff;
@@ -47,7 +45,7 @@
 	<div class="container row m-auto">
 			<div class="col-2"></div>
 			<div class="notice col-8 m-auto">
-				<table class="table">
+				<table class="table border border-2">
 					<tr>
 						<td colspan="2" class="title">제목
 						<td colspan="2"><%=notice.getnTitle() %>
@@ -66,7 +64,7 @@
 						<td colspan="12" class="title">글내용
 					</tr>
 					<tr>
-						<td colspan="12" style="height: 100%"><%=notice.getnText() %>
+						<td colspan="12" style="height: 100%; overflow:hidden; word-break:break-all;"><%=notice.getnText() %>
 					</tr>
 				</table>
 				<div style="padding-top:20px; text-align:right;">

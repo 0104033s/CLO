@@ -69,7 +69,7 @@
 						%>
 							<tr>
 								<td><%=list.get(i).getqNum() %>
-								<td><a href="question.jsp?qNum=<%=list.get(i).getqNum()%>"><%=list.get(i).getqTitle() %></a>
+								<td style="overflow:hidden; white-space:nowrap;"><a href="question.jsp?qNum=<%=list.get(i).getqNum()%>"><%=list.get(i).getqTitle() %></a>
 								<td id="userID"><%=list.get(i).getUserID()%>
 								<td><%=list.get(i).getqDate() %>
 								<td><%=list.get(i).getqCount() %>
@@ -87,7 +87,7 @@
 								%>
 								<tr>
 									<td><%=list.get(i).getqNum() %>
-									<td><a href="question.jsp?qNum=<%=list.get(i).getqNum()%>"><%=list.get(i).getqTitle() %></a>
+									<td style="overflow:hidden; white-space:nowrap;"><a href="question.jsp?qNum=<%=list.get(i).getqNum()%>"><%=list.get(i).getqTitle() %></a>
 									<td id="userID"><%=list.get(i).getUserID()%>
 									<td><%=list.get(i).getqDate() %>
 									<td><%=list.get(i).getqCount() %>
